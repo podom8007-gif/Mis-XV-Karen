@@ -11,6 +11,33 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Estilos y animación de acercamiento (Zoom-In Effect) */
+        .slide-item {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            pointer-events: none;
+        }
+
+        .slide-item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .slide-item.active img {
+            animation: zoomInEffect 4s ease-out forwards;
+        }
+
+        @keyframes zoomInEffect {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.12);
+            }
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800 antialiased selection:bg-rose-200">
@@ -35,9 +62,9 @@
         
         <div class="relative z-10 max-w-2xl mx-auto space-y-6">
             
-            <!-- IMAGEN DE LA QUINCEAÑERA -->
+            <!-- IMAGEN DE PORTADA DE LA QUINCEAÑERA -->
             <div class="flex justify-center mb-2">
-                <img src="watermarked_img_8808365528570328541.jpg" alt="Karen XV Años" class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full shadow-xl border-4 border-rose-200">
+                <img src="karen.jpeg" alt="Karen XV Años" class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full shadow-xl border-4 border-rose-200">
             </div>
 
             <span class="text-rose-600 uppercase tracking-[0.3em] text-xs font-semibold">Te invito a celebrar</span>
@@ -134,8 +161,70 @@
         </div>
     </section>
 
+    <!-- SECCIÓN: GALERÍA DE RECUERDOS (CARRUSEL 1 EN 1 CON ACERCAMIENTO) -->
+    <section class="py-16 px-6 bg-rose-50/40">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-rose-600 uppercase tracking-widest text-xs font-semibold">Momentos Especiales</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900 mt-2">Fotos del Recuerdo</h2>
+                <div class="w-16 h-0.5 bg-rose-300 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Carrusel visor individual -->
+            <div class="relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-stone-900">
+                
+                <!-- Diapositivas (Fotos 1 a 10) -->
+                <div id="slider-container" class="w-full h-full relative">
+                    <div class="slide-item active">
+                        <img src="fotos/foto1.jpeg" alt="Recuerdo 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto2.jpeg" alt="Recuerdo 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto3.jpeg" alt="Recuerdo 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto4.jpeg" alt="Recuerdo 4" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto5.jpeg" alt="Recuerdo 5" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto6.jpeg" alt="Recuerdo 6" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto7.jpeg" alt="Recuerdo 7" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto8.jpeg" alt="Recuerdo 8" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto9.jpeg" alt="Recuerdo 9" class="w-full h-full object-cover">
+                    </div>
+                    <div class="slide-item">
+                        <img src="fotos/foto10.jpeg" alt="Recuerdo 10" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Botones Anterior / Siguiente -->
+                <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer">
+                    &#10094;
+                </button>
+                <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer">
+                    &#10095;
+                </button>
+
+                <!-- Puntos indicativos de foto actual -->
+                <div id="dots-container" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                    <!-- Los puntos se generan dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- MENSAJE FINAL Y RSVP -->
-    <section class="bg-rose-50/50 py-20 px-6 text-center">
+    <section class="py-20 px-6 text-center">
         <div class="max-w-xl mx-auto space-y-6">
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">¡Te esperamos, no faltes!</h2>
             <p class="text-stone-600 font-light">Tu presencia hará que este día sea inolvidable para mí.</p>
@@ -205,6 +294,66 @@
             document.getElementById('personalized-box').classList.remove('hidden');
             document.getElementById('invitado-nombre').textContent = invitado.replace(/\+/g, ' ');
         }
+
+        // 4. Lógica del carrusel con animación de acercamiento (Zoom In)
+        const slides = document.querySelectorAll('.slide-item');
+        const dotsContainer = document.getElementById('dots-container');
+        let currentSlide = 0;
+        let slideInterval;
+
+        // Crear puntos dinámicamente
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = `w-2.5 h-2.5 rounded-full transition-all ${index === 0 ? 'bg-white w-6' : 'bg-white/50'}`;
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Actualizar puntos
+            const dots = dotsContainer.children;
+            Array.from(dots).forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.className = 'w-6 h-2.5 bg-white rounded-full transition-all';
+                } else {
+                    dot.className = 'w-2.5 h-2.5 bg-white/50 rounded-full transition-all';
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlides();
+            resetTimer();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlides();
+            resetTimer();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlides();
+            resetTimer();
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 3500); // Cambia cada 3.5 segundos
+        }
+
+        // Iniciar pase automático de fotos
+        slideInterval = setInterval(nextSlide, 3500);
     </script>
 </body>
 </html>
