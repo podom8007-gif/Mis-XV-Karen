@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Karen Piedras Muñoz</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-rose-200">
+
+    <!-- REPRODUCTOR DE MÚSICA FLOTANTE -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="music-btn" onclick="toggleMusic()" class="bg-rose-600 hover:bg-rose-700 text-white p-4 rounded-full shadow-2xl flex items-center gap-3 transition-transform hover:scale-105 cursor-pointer">
+            <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+            </svg>
+            <span id="music-text" class="text-sm font-medium pr-2">Reproducir Música</span>
+        </button>
+        <!-- Audio de fondo -->
+        <audio id="bg-music" loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-waltz.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-b from-rose-100/60 via-stone-50 to-stone-50">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#e11d48_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+            
+            <!-- IMAGEN DE LA QUINCEAÑERA -->
+            <div class="flex justify-center mb-2">
+                <img src="watermarked_img_8808365528570328541.jpg" alt="Karen XV Años" class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full shadow-xl border-4 border-rose-200">
+            </div>
+
+            <span class="text-rose-600 uppercase tracking-[0.3em] text-xs font-semibold">Te invito a celebrar</span>
+            
+            <h2 class="text-2xl md:text-3xl font-serif text-stone-600 italic">Mis XV Años</h2>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-stone-900 tracking-tight">
+                Karen Piedras Muñoz
+            </h1>
+
+            <div class="w-24 h-0.5 bg-rose-400 mx-auto my-4"></div>
+
+            <p class="text-lg md:text-xl font-light text-stone-600">
+                Sábado, <span class="font-semibold text-stone-800">7 de Noviembre de 2026</span>
+            </p>
+
+            <!-- CONTENEDOR PERSONALIZADO PARA CADA INVITADO Y SU FAMILIA -->
+            <div id="personalized-box" class="mt-8 p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-rose-200 max-w-md mx-auto hidden">
+                <p class="text-xs uppercase tracking-widest text-rose-600 font-bold mb-1">Invitación Especial Para</p>
+                <h3 id="invitado-nombre" class="text-2xl font-serif font-bold text-stone-900 mb-2"></h3>
+                <span class="inline-block bg-rose-100 text-rose-800 text-xs px-4 py-1.5 rounded-full font-semibold">
+                    ¡Y toda su familia!
+                </span>
+            </div>
+
+            <!-- CUENTA REGRESIVA -->
+            <div class="grid grid-cols-4 gap-3 max-w-md mx-auto pt-8">
+                <div class="bg-white p-3 rounded-xl shadow-xs border border-stone-200">
+                    <span id="days" class="block text-2xl font-bold text-rose-600">00</span>
+                    <span class="text-[10px] uppercase text-stone-500 tracking-wider">Días</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-xs border border-stone-200">
+                    <span id="hours" class="block text-2xl font-bold text-rose-600">00</span>
+                    <span class="text-[10px] uppercase text-stone-500 tracking-wider">Horas</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-xs border border-stone-200">
+                    <span id="minutes" class="block text-2xl font-bold text-rose-600">00</span>
+                    <span class="text-[10px] uppercase text-stone-500 tracking-wider">Minutos</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-xs border border-stone-200">
+                    <span id="seconds" class="block text-2xl font-bold text-rose-600">00</span>
+                    <span class="text-[10px] uppercase text-stone-500 tracking-wider">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ITINERARIO -->
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-rose-600 uppercase tracking-widest text-xs font-semibold">Programa</span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900 mt-2">Itinerario del Día</h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+            <!-- Misa -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 relative overflow-hidden group hover:border-rose-300 transition-all">
+                <div class="absolute top-0 left-0 w-2 h-full bg-rose-500"></div>
+                <span class="text-rose-600 font-bold text-lg">5:00 PM</span>
+                <h3 class="text-xl font-serif font-bold text-stone-900 mt-2">Ceremonia Religiosa</h3>
+                <p class="text-stone-600 mt-1">Iglesia de Santa María Magdalena</p>
+                <p class="text-sm text-stone-500 mt-1">La Magdalena Tlaltelulco, Col. Centro</p>
+                <a href="https://maps.app.goo.gl/tu_enlace_misa" target="_blank" class="mt-4 inline-flex items-center text-xs font-semibold text-rose-600 hover:text-rose-800">
+                    Ver ubicación en mapa &rarr;
+                </a>
+            </div>
+
+            <!-- Recepción -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 relative overflow-hidden group hover:border-rose-300 transition-all">
+                <div class="absolute top-0 left-0 w-2 h-full bg-rose-500"></div>
+                <span class="text-rose-600 font-bold text-lg">6:00 PM</span>
+                <h3 class="text-xl font-serif font-bold text-stone-900 mt-2">Recepción</h3>
+                <p class="text-stone-600 mt-1">Barrio de Comalteopa</p>
+                <p class="text-sm text-stone-500 mt-1">Calle Prolongación Hidalgo No. 6</p>
+                <a href="https://maps.app.goo.gl/tu_enlace_recepcion" target="_blank" class="mt-4 inline-flex items-center text-xs font-semibold text-rose-600 hover:text-rose-800">
+                    Ver ubicación en mapa &rarr;
+                </a>
+            </div>
+
+            <!-- Comida -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 relative overflow-hidden group hover:border-rose-300 transition-all">
+                <div class="absolute top-0 left-0 w-2 h-full bg-rose-400"></div>
+                <span class="text-rose-600 font-bold text-lg">6:30 PM</span>
+                <h3 class="text-xl font-serif font-bold text-stone-900 mt-2">Comida</h3>
+                <p class="text-stone-600 mt-1">Disfrutemos juntos de un gran banquete.</p>
+            </div>
+
+            <!-- Baile -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 relative overflow-hidden group hover:border-rose-300 transition-all">
+                <div class="absolute top-0 left-0 w-2 h-full bg-rose-600"></div>
+                <span class="text-rose-600 font-bold text-lg">7:00 PM</span>
+                <h3 class="text-xl font-serif font-bold text-stone-900 mt-2">Baile y Fiesta</h3>
+                <p class="text-stone-600 mt-1">Ameniza: <strong class="text-stone-900">Sonido Lasy Boys</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENSAJE FINAL Y RSVP -->
+    <section class="bg-rose-50/50 py-20 px-6 text-center">
+        <div class="max-w-xl mx-auto space-y-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">¡Te esperamos, no faltes!</h2>
+            <p class="text-stone-600 font-light">Tu presencia hará que este día sea inolvidable para mí.</p>
+            
+            <div class="pt-4">
+                <a href="https://wa.me/522460000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Karen." target="_blank" class="bg-stone-900 hover:bg-stone-800 text-white font-medium px-8 py-4 rounded-full shadow-lg transition-all inline-block">
+                    Confirmar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-xs text-stone-400 border-t border-stone-200">
+        <p>Karen Piedras Muñoz &bull; Mis XV Años 2026</p>
+    </footer>
+
+    <!-- JAVASCRIPT DE CONFIGURACIÓN -->
+    <script>
+        // 1. Música de fondo interactiva
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        const musicText = document.getElementById('music-text');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicText.textContent = "Reproducir Música";
+                musicBtn.classList.remove('bg-stone-800');
+                musicBtn.classList.add('bg-rose-600');
+            } else {
+                music.play().then(() => {
+                    musicText.textContent = "Pausar Música";
+                    musicBtn.classList.remove('bg-rose-600');
+                    musicBtn.classList.add('bg-stone-800');
+                }).catch(e => console.log("Audio play error:", e));
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // 2. Cuenta regresiva (7 de Noviembre de 2026 a las 17:00 hrs)
+        const eventDate = new Date("2026-11-07T17:00:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) return;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }, 1000);
+
+        // 3. Lector automático del nombre de la familia por URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const invitado = urlParams.get('invitado');
+
+        if (invitado) {
+            document.getElementById('personalized-box').classList.remove('hidden');
+            document.getElementById('invitado-nombre').textContent = invitado.replace(/\+/g, ' ');
+        }
+    </script>
+</body>
+</html>
