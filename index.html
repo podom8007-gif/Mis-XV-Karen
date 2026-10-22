@@ -59,10 +59,10 @@
             <img src="sobre.jpeg" alt="Fondo Sobre" class="w-full h-full object-cover">
         </div>
 
-        <div class="relative z-10 max-w-md mx-auto space-y-6 bg-slate-950/40 p-6 rounded-3xl backdrop-blur-[2px] border border-amber-300/25">
+        <div class="relative z-10 max-w-md mx-auto space-y-6 p-6">
             <!-- FOTO DE PORTADA -->
             <div class="flex justify-center mb-2">
-                <img src="karen.jpeg" alt="Karen XV Años" class="w-44 h-44 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-amber-300">
+                <img src="karen.jpeg" alt="Karen XV Años" class="w-44 h-44 md:w-52 md:h-52 object-cover rounded-full border-4 border-amber-300">
             </div>
 
             <!-- TÍTULO DE BIENVENIDA -->
@@ -76,7 +76,7 @@
 
             <!-- BOTÓN PARA VER INVITACIÓN E INICIAR MÚSICA -->
             <div class="pt-2">
-                <button onclick="openInvitation()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-10 py-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-3 mx-auto">
+                <button onclick="openInvitation()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-3 mx-auto">
                     <span>Ver invitación</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -99,11 +99,11 @@
                 </video>
             </div>
 
-            <div class="relative z-10 max-w-2xl mx-auto space-y-6 bg-slate-950/50 p-8 rounded-3xl backdrop-blur-[2px] border border-amber-400/30">
+            <div class="relative z-10 max-w-2xl mx-auto space-y-6 p-8">
                 
                 <!-- FOTO DE KAREN EN LA SEGUNDA PARTE -->
                 <div class="flex justify-center mb-2">
-                    <img src="karen.jpeg" alt="Karen XV Años" class="w-36 h-36 md:w-44 md:h-44 object-cover rounded-full shadow-2xl border-4 border-amber-300">
+                    <img src="karen.jpeg" alt="Karen XV Años" class="w-36 h-36 md:w-44 md:h-44 object-cover rounded-full border-4 border-amber-300">
                 </div>
 
                 <span class="text-amber-300 uppercase tracking-[0.3em] text-xs font-bold">Te invito a celebrar</span>
@@ -120,7 +120,7 @@
                 </p>
 
                 <!-- CONTENEDOR PERSONALIZADO PARA CADA INVITADO Y SU FAMILIA -->
-                <div id="personalized-box" class="mt-8 p-6 bg-slate-900/90 rounded-2xl shadow-xl border border-amber-400/40 max-w-md mx-auto hidden">
+                <div id="personalized-box" class="mt-8 p-6 bg-slate-900/90 rounded-2xl max-w-md mx-auto hidden">
                     <p class="text-xs uppercase tracking-widest text-amber-300 font-bold mb-1">Invitación Especial Para</p>
                     <h3 id="invitado-nombre" class="text-2xl font-serif font-bold text-white mb-2"></h3>
                     <span class="inline-block bg-amber-400/20 text-amber-200 border border-amber-400/40 text-xs px-4 py-1.5 rounded-full font-semibold">
@@ -130,19 +130,19 @@
 
                 <!-- CUENTA REGRESIVA -->
                 <div class="grid grid-cols-4 gap-3 max-w-md mx-auto pt-8">
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl">
                         <span id="days" class="block text-2xl font-bold text-amber-300">00</span>
                         <span class="text-[10px] uppercase text-slate-300 tracking-wider">Días</span>
                     </div>
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl">
                         <span id="hours" class="block text-2xl font-bold text-amber-300">00</span>
                         <span class="text-[10px] uppercase text-slate-300 tracking-wider">Horas</span>
                     </div>
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl">
                         <span id="minutes" class="block text-2xl font-bold text-amber-300">00</span>
                         <span class="text-[10px] uppercase text-slate-300 tracking-wider">Minutos</span>
                     </div>
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl">
                         <span id="seconds" class="block text-2xl font-bold text-amber-300">00</span>
                         <span class="text-[10px] uppercase text-slate-300 tracking-wider">Segundos</span>
                     </div>
@@ -159,7 +159,7 @@
 
             <div class="grid gap-6 md:grid-cols-2">
                 <!-- Misa con Foto Local (iglesia.jpeg) y Enlace Directo a Google Maps -->
-                <div class="bg-slate-900/90 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all flex flex-col justify-between">
+                <div class="bg-slate-900/90 rounded-2xl relative overflow-hidden group transition-all flex flex-col justify-between">
                     <div>
                         <!-- Foto de la Iglesia de Santa María Magdalena -->
                         <div class="w-full h-48 overflow-hidden relative">
@@ -180,7 +180,7 @@
                 </div>
 
                 <!-- Recepción con Enlace Directo a Google Maps -->
-                <div class="bg-slate-900/90 p-8 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all flex flex-col justify-between">
+                <div class="bg-slate-900/90 p-8 rounded-2xl relative overflow-hidden group transition-all flex flex-col justify-between">
                     <div>
                         <div class="absolute top-0 left-0 w-2 h-full bg-amber-400"></div>
                         <span class="text-amber-300 font-bold text-lg">6:00 PM</span>
@@ -196,7 +196,7 @@
                 </div>
 
                 <!-- Comida -->
-                <div class="bg-slate-900/90 p-8 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all">
+                <div class="bg-slate-900/90 p-8 rounded-2xl relative overflow-hidden group transition-all">
                     <div class="absolute top-0 left-0 w-2 h-full bg-amber-300"></div>
                     <span class="text-amber-300 font-bold text-lg">6:30 PM</span>
                     <h3 class="text-xl font-serif font-bold text-white mt-2">Comida</h3>
@@ -204,7 +204,7 @@
                 </div>
 
                 <!-- Baile y Fiesta con Foto Local (baile.jpeg) -->
-                <div class="bg-slate-900/90 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all flex flex-col justify-between">
+                <div class="bg-slate-900/90 rounded-2xl relative overflow-hidden group transition-all flex flex-col justify-between">
                     <div>
                         <!-- Foto de Baile y Fiesta -->
                         <div class="w-full h-48 overflow-hidden relative">
@@ -230,7 +230,7 @@
                 </div>
 
                 <!-- Carrusel visor individual -->
-                <div class="relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-400/40 bg-slate-950">
+                <div class="relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden bg-slate-950">
                     
                     <!-- Diapositivas (Fotos 1 a 10) -->
                     <div id="slider-container" class="w-full h-full relative">
@@ -267,10 +267,10 @@
                     </div>
 
                     <!-- Botones Anterior / Siguiente -->
-                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-950/70 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full transition-all z-20 cursor-pointer border border-amber-400/40">
+                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-950/70 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full transition-all z-20 cursor-pointer">
                         &#10094;
                     </button>
-                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-950/70 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full transition-all z-20 cursor-pointer border border-amber-400/40">
+                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-950/70 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full transition-all z-20 cursor-pointer">
                         &#10095;
                     </button>
 
@@ -289,7 +289,7 @@
                 <p class="text-slate-300 font-light">Tu presencia hará que este día sea inolvidable para mí.</p>
                 
                 <div class="pt-4">
-                    <a href="https://wa.me/522461288027?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Karen." target="_blank" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold px-8 py-4 rounded-full shadow-xl transition-all inline-block hover:scale-105">
+                    <a href="https://wa.me/522461288027?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Karen." target="_blank" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold px-8 py-4 rounded-full transition-all inline-block hover:scale-105">
                         Confirmar por WhatsApp
                     </a>
                 </div>
@@ -419,6 +419,7 @@
     </script>
 </body>
 </html>
+
 
 
 
