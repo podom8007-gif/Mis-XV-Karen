@@ -51,32 +51,31 @@
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- 1. PANTALLA PRINCIPAL (SOBRE ELEGANTE) -->
+    <!-- 1. PANTALLA PRINCIPAL (SOBRE ELEGANTE AL 100% DE CLARIDAD) -->
     <div id="welcome-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center px-6 bg-slate-950 transition-opacity duration-700">
         
-        <!-- Imagen de fondo de sobre elegante (sobre.jpeg) -->
+        <!-- Imagen de fondo de sobre elegante (sobre.jpeg al 100% nítido) -->
         <div class="absolute inset-0 z-0">
             <img src="sobre.jpeg" alt="Fondo Sobre" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-xs"></div>
         </div>
 
-        <div class="relative z-10 max-w-md mx-auto space-y-6">
+        <div class="relative z-10 max-w-md mx-auto space-y-6 bg-slate-950/40 p-6 rounded-3xl backdrop-blur-[2px] border border-amber-300/20 shadow-2xl">
             <!-- FOTO DE PORTADA -->
-            <div class="flex justify-center mb-4">
-                <img src="karen.jpeg" alt="Karen XV Años" class="w-44 h-44 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-amber-300/80">
+            <div class="flex justify-center mb-2">
+                <img src="karen.jpeg" alt="Karen XV Años" class="w-44 h-44 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-amber-300">
             </div>
 
             <!-- TÍTULO DE BIENVENIDA -->
-            <h1 class="text-4xl md:text-5xl font-serif font-bold text-amber-100 tracking-tight drop-shadow-md">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-amber-100 tracking-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
                 Te invito a mis XV años
             </h1>
             
-            <p class="text-amber-300/90 font-serif italic text-xl">Karen Piedras Muñoz</p>
+            <p class="text-amber-200 font-serif italic text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">Karen Piedras Muñoz</p>
 
-            <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-6"></div>
+            <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-4"></div>
 
             <!-- BOTÓN PARA VER INVITACIÓN E INICIAR MÚSICA -->
-            <div class="pt-4">
+            <div class="pt-2">
                 <button onclick="openInvitation()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-10 py-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-3 mx-auto">
                     <span>Ver invitación</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,39 +89,38 @@
     <!-- 2. CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
     <div id="invitation-content" class="hidden opacity-0 transition-opacity duration-1000">
 
-        <!-- SECCIÓN PRINCIPAL (HERO) CON VIDEO DE FONDO (.mp4) -->
+        <!-- SECCIÓN PRINCIPAL (HERO) CON VIDEO DE FONDO (.mp4 AL 100% NÍTIDO) -->
         <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 bg-slate-950 overflow-hidden">
             
-            <!-- Video de fondo (fondo.mp4) -->
+            <!-- Video de fondo (fondo.mp4 al 100% sin difuminar) -->
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <video autoplay muted loop playsinline class="w-full h-full object-cover">
                     <source src="fondo.mp4" type="video/mp4">
                 </video>
-                <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs"></div>
             </div>
 
-            <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+            <div class="relative z-10 max-w-2xl mx-auto space-y-6 bg-slate-950/50 p-8 rounded-3xl backdrop-blur-[2px] border border-amber-400/30 shadow-2xl">
                 
                 <!-- FOTO DE KAREN EN LA SEGUNDA PARTE -->
                 <div class="flex justify-center mb-2">
-                    <img src="karen.jpeg" alt="Karen XV Años" class="w-36 h-36 md:w-44 md:h-44 object-cover rounded-full shadow-2xl border-4 border-amber-300/80">
+                    <img src="karen.jpeg" alt="Karen XV Años" class="w-36 h-36 md:w-44 md:h-44 object-cover rounded-full shadow-2xl border-4 border-amber-300">
                 </div>
 
-                <span class="text-amber-300 uppercase tracking-[0.3em] text-xs font-semibold">Te invito a celebrar</span>
+                <span class="text-amber-300 uppercase tracking-[0.3em] text-xs font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">Te invito a celebrar</span>
                 
-                <h2 class="text-2xl md:text-3xl font-serif text-slate-300 italic">Mis XV Años</h2>
-                <h1 class="text-5xl md:text-7xl font-serif font-bold text-amber-100 tracking-tight drop-shadow-md">
+                <h2 class="text-2xl md:text-3xl font-serif text-slate-200 italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">Mis XV Años</h2>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold text-amber-100 tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)]">
                     Karen Piedras Muñoz
                 </h1>
 
                 <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-4"></div>
 
-                <p class="text-lg md:text-xl font-light text-slate-300">
+                <p class="text-lg md:text-xl font-light text-slate-100 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                     Sábado, <span class="font-semibold text-amber-200">7 de Noviembre de 2026</span>
                 </p>
 
                 <!-- CONTENEDOR PERSONALIZADO PARA CADA INVITADO Y SU FAMILIA -->
-                <div id="personalized-box" class="mt-8 p-6 bg-slate-900/90 backdrop-blur-md rounded-2xl shadow-xl border border-amber-400/30 max-w-md mx-auto hidden">
+                <div id="personalized-box" class="mt-8 p-6 bg-slate-900/90 rounded-2xl shadow-xl border border-amber-400/40 max-w-md mx-auto hidden">
                     <p class="text-xs uppercase tracking-widest text-amber-300 font-bold mb-1">Invitación Especial Para</p>
                     <h3 id="invitado-nombre" class="text-2xl font-serif font-bold text-white mb-2"></h3>
                     <span class="inline-block bg-amber-400/20 text-amber-200 border border-amber-400/40 text-xs px-4 py-1.5 rounded-full font-semibold">
@@ -132,21 +130,21 @@
 
                 <!-- CUENTA REGRESIVA -->
                 <div class="grid grid-cols-4 gap-3 max-w-md mx-auto pt-8">
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
                         <span id="days" class="block text-2xl font-bold text-amber-300">00</span>
-                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Días</span>
+                        <span class="text-[10px] uppercase text-slate-300 tracking-wider">Días</span>
                     </div>
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
                         <span id="hours" class="block text-2xl font-bold text-amber-300">00</span>
-                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Horas</span>
+                        <span class="text-[10px] uppercase text-slate-300 tracking-wider">Horas</span>
                     </div>
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
                         <span id="minutes" class="block text-2xl font-bold text-amber-300">00</span>
-                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Minutos</span>
+                        <span class="text-[10px] uppercase text-slate-300 tracking-wider">Minutos</span>
                     </div>
-                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/40 shadow-lg">
                         <span id="seconds" class="block text-2xl font-bold text-amber-300">00</span>
-                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Segundos</span>
+                        <span class="text-[10px] uppercase text-slate-300 tracking-wider">Segundos</span>
                     </div>
                 </div>
             </div>
@@ -161,14 +159,13 @@
 
             <div class="grid gap-6 md:grid-cols-2">
                 <!-- Misa con Foto Local (iglesia.jpeg) y Enlace Directo a Google Maps -->
-                <div class="bg-slate-900/80 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                <div class="bg-slate-900/90 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all flex flex-col justify-between">
                     <div>
                         <!-- Foto de la Iglesia de Santa María Magdalena -->
                         <div class="w-full h-48 overflow-hidden relative">
                             <img src="iglesia.jpeg" alt="Iglesia Santa María Magdalena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
                         </div>
-                        <div class="p-8 pt-2">
+                        <div class="p-8 pt-4">
                             <span class="text-amber-300 font-bold text-lg">5:00 PM</span>
                             <h3 class="text-xl font-serif font-bold text-white mt-1">Ceremonia Religiosa</h3>
                             <p class="text-slate-300 mt-1">Iglesia de Santa María Magdalena</p>
@@ -183,7 +180,7 @@
                 </div>
 
                 <!-- Recepción con Enlace Directo a Google Maps -->
-                <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                <div class="bg-slate-900/90 p-8 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all flex flex-col justify-between">
                     <div>
                         <div class="absolute top-0 left-0 w-2 h-full bg-amber-400"></div>
                         <span class="text-amber-300 font-bold text-lg">6:00 PM</span>
@@ -199,7 +196,7 @@
                 </div>
 
                 <!-- Comida -->
-                <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all">
+                <div class="bg-slate-900/90 p-8 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all">
                     <div class="absolute top-0 left-0 w-2 h-full bg-amber-300"></div>
                     <span class="text-amber-300 font-bold text-lg">6:30 PM</span>
                     <h3 class="text-xl font-serif font-bold text-white mt-2">Comida</h3>
@@ -207,14 +204,13 @@
                 </div>
 
                 <!-- Baile y Fiesta con Foto Local (baile.jpeg) -->
-                <div class="bg-slate-900/80 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                <div class="bg-slate-900/90 rounded-2xl border border-amber-400/30 shadow-lg relative overflow-hidden group hover:border-amber-400/60 transition-all flex flex-col justify-between">
                     <div>
                         <!-- Foto de Baile y Fiesta -->
                         <div class="w-full h-48 overflow-hidden relative">
                             <img src="baile.jpeg" alt="Baile y Fiesta XV Años" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
                         </div>
-                        <div class="p-8 pt-2">
+                        <div class="p-8 pt-4">
                             <span class="text-amber-300 font-bold text-lg">7:00 PM</span>
                             <h3 class="text-xl font-serif font-bold text-white mt-1">Baile y Fiesta</h3>
                             <p class="text-slate-300 mt-1">Ameniza: <strong class="text-amber-200">Sonido Lasy Boys</strong></p>
@@ -271,10 +267,10 @@
                     </div>
 
                     <!-- Botones Anterior / Siguiente -->
-                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer border border-amber-400/30">
+                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-950/70 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full transition-all z-20 cursor-pointer border border-amber-400/40">
                         &#10094;
                     </button>
-                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer border border-amber-400/30">
+                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-950/70 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full transition-all z-20 cursor-pointer border border-amber-400/40">
                         &#10095;
                     </button>
 
