@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envío de Invitaciones - XV Karen</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-6">
+
+    <div class="max-w-xl mx-auto space-y-6">
+        
+        <!-- ENCABEZADO -->
+        <div class="text-center space-y-2">
+            <h1 class="text-3xl font-bold text-amber-300">Gestor de Invitaciones XV Karen</h1>
+            <p class="text-slate-400 text-sm">Envía invitaciones personalizadas por WhatsApp seleccionando o buscando a tus invitados.</p>
+        </div>
+
+        <!-- ACCIONES RÁPIDAS -->
+        <div class="bg-slate-900 p-6 rounded-2xl border border-amber-400/30 space-y-4 shadow-xl">
+            <h2 class="text-lg font-semibold text-white">Nuevo Envíos / Seleccionar Contacto</h2>
+            
+            <div class="flex flex-col sm:flex-row gap-3">
+                <!-- Botón para importar desde la agenda del celular (funciona en móviles compatibles) -->
+                <button onclick="importarContactoTelefono()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer text-sm">
+                    <span>📱 Importar de la Agenda</span>
+                </button>
+            </div>
+
+            <div class="space-y-3 pt-2">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Nombre del Invitado / Familia</label>
+                    <input type="text" id="input-nombre" placeholder="Ej. Familia Pérez Muñoz" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-400">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1">Número de WhatsApp (con código de país, ej. 52...)</label>
+                    <input type="text" id="input-telefono" placeholder="Ej. 522461288027" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-400">
+                </div>
+                <button onclick="enviarWhatsAppDirecto()" class="w-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                    <span>Enviar Invitación por WhatsApp</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- LISTA RÁPIDA DE EJEMPLO / HISTORIAL -->
+        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <h2 class="text-lg font-semibold text-white">Lista de Invitados Frecuentes</h2>
+            
+            <div id="lista-invitados" class="space-y-3">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const baseUrl = "https://podom8007-gif.github.io/Mis-XV-Karen/?invitado=";
+
+        // Lista base de ejemplo que puedes editar
+        let invitados = [
+            { nombre: "Familia Pérez Muñoz", telefono: "2461288027" },
+            { nombre: "Familia Piedras Gómez", telefono: "" },
+            { nombre: "Sr. Juan Pérez", telefono: "" }
+        ];
+
+        function renderizarLista() {
+            const contenedor = document.getElementById('lista-invitados');
+            contenedor.innerHTML = '';
+
+            invitados.forEach((inv, index) => {
+                const link = baseUrl + encodeURIComponent(inv.nombre);
+                const mensaje = `¡Hola! Te comparto con mucho cariño la invitación digital para mis XV Años: ${link}`;
+                const urlWp = inv.telefono ? `https://wa.me/${inv.telefono}?text=${encodeURIComponent(mensaje)}` : `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+
+                const div = document.createElement('div');
+                div.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between bg-slate-950 p-4 rounded-xl border border-slate-800 gap-3";
+                div.innerHTML = `
+                    <div>
+                        <p class="font-semibold text-white">${inv.nombre}</p>
+                        <p class="text-xs text-slate-400 truncate max-w-xs">${link}</p>
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button onclick="copiarLink('${link}')" class="flex-1 sm:flex-none bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs px-3 py-2 rounded-lg transition">Copiar</button>
+                        <a href="${urlWp}" target="_blank" class="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-4 py-2 rounded-lg transition text-center font-medium">WhatsApp</a>
+                    </div>
+                `;
+                contenedor.appendChild(div);
+            });
+        }
+
+        async function importarContactoTelefono() {
+            // Verifica si el navegador del celular soporta la API de contactos nativa
+            if ('contacts' in navigator && 'select' in navigator.contacts) {
+                try {
+                    const props = ['name', 'tel'];
+                    const opts = { multiple: false };
+                    const resultado = await navigator.contacts.select(props, opts);
+                    
+                    if (resultado.length > 0) {
+                        const contacto = resultado[0];
+                        const nombre = contacto.name ? contacto.name[0] : '';
+                        const telefono = contacto.tel ? contacto.tel[0].replace(/\D/g, '') : '';
+
+                        document.getElementById('input-nombre').value = nombre;
+                        document.getElementById('input-telefono').value = telefono;
+                    }
+                } catch (ex) {
+                    alert("No se pudo acceder a los contactos o cancelaste la selección.");
+                }
+            } else {
+                alert("Tu navegador móvil no soporta la selección directa de contactos. Puedes escribir el nombre y número manualmente o usar tu lista.");
+            }
+        }
+
+        function enviarWhatsAppDirecto() {
+            const nombre = document.getElementById('input-nombre').value.trim();
+            const telefono = document.getElementById('input-telefono').value.trim();
+
+            if (!nombre) {
+                alert("Por favor ingresa el nombre del invitado.");
+                return;
+            }
+
+            const link = baseUrl + encodeURIComponent(nombre);
+            const mensaje = `¡Hola ${nombre}! Te comparto con mucho cariño la invitación digital para mis XV Años: ${link}`;
+            
+            let urlWp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+            if (!telefono) {
+                urlWp = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+            }
+
+            window.open(urlWp, '_blank');
+        }
+
+        function copiarLink(link) {
+            navigator.clipboard.writeText(link);
+            alert("¡Enlace copiado al portapapeles!");
+        }
+
+        renderizarLista();
+    </script>
+</body>
+</html>
