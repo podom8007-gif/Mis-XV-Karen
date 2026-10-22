@@ -51,235 +51,275 @@
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- SECCIÓN PRINCIPAL (HERO) CON FONDO AZUL MARINO Y DESTELLOS -->
-    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900 via-slate-950 to-slate-950 overflow-hidden">
+    <!-- 1. PANTALLA PRINCIPAL (BIENVENIDA / SOBRE) -->
+    <div id="welcome-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900 via-slate-950 to-slate-950 transition-opacity duration-700">
         
-        <!-- EFECTO DE DESTELLOS Y LUCES EN EL FONDO -->
+        <!-- EFECTO DE DESTELLOS Y LUCES -->
         <div class="absolute inset-0 opacity-30 bg-[radial-gradient(#f59e0b_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none"></div>
         <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute top-1/2 -right-40 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 -right-40 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-2xl mx-auto space-y-6">
-            
-            <!-- IMAGEN DE PORTADA DE LA QUINCEAÑERA -->
-            <div class="flex justify-center mb-2">
-                <img src="karen.jpeg" alt="Karen XV Años" class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full shadow-2xl border-4 border-amber-300/80">
+        <div class="relative z-10 max-w-md mx-auto space-y-6">
+            <!-- FOTO DE PORTADA -->
+            <div class="flex justify-center mb-4">
+                <img src="karen.jpeg" alt="Karen XV Años" class="w-44 h-44 md:w-52 md:h-52 object-cover rounded-full shadow-2xl border-4 border-amber-300/80">
             </div>
 
-            <span class="text-amber-300 uppercase tracking-[0.3em] text-xs font-semibold">Te invito a celebrar</span>
-            
-            <h2 class="text-2xl md:text-3xl font-serif text-slate-300 italic">Mis XV Años</h2>
-            <h1 class="text-5xl md:text-7xl font-serif font-bold text-amber-100 tracking-tight drop-shadow-md">
-                Karen Piedras Muñoz
+            <!-- TÍTULO DE BIENVENIDA -->
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-amber-100 tracking-tight drop-shadow-md">
+                Te invito a mis XV años
             </h1>
-
-            <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-4"></div>
-
-            <p class="text-lg md:text-xl font-light text-slate-300">
-                Sábado, <span class="font-semibold text-amber-200">7 de Noviembre de 2026</span>
-            </p>
-
-            <!-- CONTENEDOR PERSONALIZADO PARA CADA INVITADO Y SU FAMILIA -->
-            <div id="personalized-box" class="mt-8 p-6 bg-slate-900/80 backdrop-blur-md rounded-2xl shadow-xl border border-amber-400/30 max-w-md mx-auto hidden">
-                <p class="text-xs uppercase tracking-widest text-amber-300 font-bold mb-1">Invitación Especial Para</p>
-                <h3 id="invitado-nombre" class="text-2xl font-serif font-bold text-white mb-2"></h3>
-                <span class="inline-block bg-amber-400/20 text-amber-200 border border-amber-400/40 text-xs px-4 py-1.5 rounded-full font-semibold">
-                    ¡Y toda su familia!
-                </span>
-            </div>
-
-            <!-- CUENTA REGRESIVA -->
-            <div class="grid grid-cols-4 gap-3 max-w-md mx-auto pt-8">
-                <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
-                    <span id="days" class="block text-2xl font-bold text-amber-300">00</span>
-                    <span class="text-[10px] uppercase text-slate-400 tracking-wider">Días</span>
-                </div>
-                <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
-                    <span id="hours" class="block text-2xl font-bold text-amber-300">00</span>
-                    <span class="text-[10px] uppercase text-slate-400 tracking-wider">Horas</span>
-                </div>
-                <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
-                    <span id="minutes" class="block text-2xl font-bold text-amber-300">00</span>
-                    <span class="text-[10px] uppercase text-slate-400 tracking-wider">Minutos</span>
-                </div>
-                <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
-                    <span id="seconds" class="block text-2xl font-bold text-amber-300">00</span>
-                    <span class="text-[10px] uppercase text-slate-400 tracking-wider">Segundos</span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- ITINERARIO -->
-    <section class="py-20 px-6 max-w-4xl mx-auto relative">
-        <div class="text-center mb-16">
-            <span class="text-amber-300 uppercase tracking-widest text-xs font-semibold">Programa</span>
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mt-2">Itinerario del Día</h2>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-2">
-            <!-- Misa con Foto Local (iglesia.jpeg) y Enlace Directo a Google Maps -->
-            <div class="bg-slate-900/80 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
-                <div>
-                    <!-- Foto de la Iglesia de Santa María Magdalena -->
-                    <div class="w-full h-48 overflow-hidden relative">
-                        <img src="iglesia.jpeg" alt="Iglesia Santa María Magdalena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-                    </div>
-                    <div class="p-8 pt-2">
-                        <span class="text-amber-300 font-bold text-lg">5:00 PM</span>
-                        <h3 class="text-xl font-serif font-bold text-white mt-1">Ceremonia Religiosa</h3>
-                        <p class="text-slate-300 mt-1">Iglesia de Santa María Magdalena</p>
-                        <p class="text-sm text-slate-400 mt-1">La Magdalena Tlaltelulco, Col. Centro</p>
-                    </div>
-                </div>
-                <div class="p-8 pt-0">
-                    <a href="https://maps.app.goo.gl/36YGzN8QunBHEWrV9?g_st=ac" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-300 hover:text-amber-100 bg-amber-400/10 border border-amber-400/30 px-4 py-2.5 rounded-lg w-full justify-center transition-colors">
-                        📍 Abrir ubicación de la Iglesia en Google Maps
-                    </a>
-                </div>
-            </div>
-
-            <!-- Recepción con Enlace Directo a Google Maps -->
-            <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
-                <div>
-                    <div class="absolute top-0 left-0 w-2 h-full bg-amber-400"></div>
-                    <span class="text-amber-300 font-bold text-lg">6:00 PM</span>
-                    <h3 class="text-xl font-serif font-bold text-white mt-2">Recepción</h3>
-                    <p class="text-slate-300 mt-1">Barrio de Comalteopa</p>
-                    <p class="text-sm text-slate-400 mt-1">Calle Prolongación Hidalgo No. 6</p>
-                </div>
-                <div class="mt-8">
-                    <a href="https://maps.app.goo.gl/YG32VAfGYyLA54p6A?g_st=aw" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-300 hover:text-amber-100 bg-amber-400/10 border border-amber-400/30 px-4 py-2.5 rounded-lg w-full justify-center transition-colors">
-                        📍 Abrir ubicación de la Recepción en Google Maps
-                    </a>
-                </div>
-            </div>
-
-            <!-- Comida -->
-            <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all">
-                <div class="absolute top-0 left-0 w-2 h-full bg-amber-300"></div>
-                <span class="text-amber-300 font-bold text-lg">6:30 PM</span>
-                <h3 class="text-xl font-serif font-bold text-white mt-2">Comida</h3>
-                <p class="text-slate-300 mt-1">Disfrutemos juntos de un gran banquete.</p>
-            </div>
-
-            <!-- Baile y Fiesta con Foto Local (baile.jpeg) -->
-            <div class="bg-slate-900/80 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
-                <div>
-                    <!-- Foto de Baile y Fiesta -->
-                    <div class="w-full h-48 overflow-hidden relative">
-                        <img src="baile.jpeg" alt="Baile y Fiesta XV Años" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-                    </div>
-                    <div class="p-8 pt-2">
-                        <span class="text-amber-300 font-bold text-lg">7:00 PM</span>
-                        <h3 class="text-xl font-serif font-bold text-white mt-1">Baile y Fiesta</h3>
-                        <p class="text-slate-300 mt-1">Ameniza: <strong class="text-amber-200">Sonido Lasy Boys</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN: GALERÍA DE RECUERDOS (CARRUSEL CON ACERCAMIENTO) -->
-    <section class="py-16 px-6 bg-slate-900/50 relative">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-10">
-                <span class="text-amber-300 uppercase tracking-widest text-xs font-semibold">Momentos Especiales</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mt-2">Fotos del Recuerdo</h2>
-                <div class="w-16 h-0.5 bg-amber-400/60 mx-auto mt-4"></div>
-            </div>
-
-            <!-- Carrusel visor individual -->
-            <div class="relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-400/40 bg-slate-950">
-                
-                <!-- Diapositivas (Fotos 1 a 10) -->
-                <div id="slider-container" class="w-full h-full relative">
-                    <div class="slide-item active">
-                        <img src="fotos/foto1.jpeg" alt="Recuerdo 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto2.jpeg" alt="Recuerdo 2" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto3.jpeg" alt="Recuerdo 3" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto4.jpeg" alt="Recuerdo 4" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto5.jpeg" alt="Recuerdo 5" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto6.jpeg" alt="Recuerdo 6" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto7.jpeg" alt="Recuerdo 7" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto8.jpeg" alt="Recuerdo 8" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto9.jpeg" alt="Recuerdo 9" class="w-full h-full object-cover">
-                    </div>
-                    <div class="slide-item">
-                        <img src="fotos/foto10.jpeg" alt="Recuerdo 10" class="w-full h-full object-cover">
-                    </div>
-                </div>
-
-                <!-- Botones Anterior / Siguiente -->
-                <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer border border-amber-400/30">
-                    &#10094;
-                </button>
-                <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer border border-amber-400/30">
-                    &#10095;
-                </button>
-
-                <!-- Puntos indicativos de foto actual -->
-                <div id="dots-container" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                    <!-- Los puntos se generan dinámicamente -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MENSAJE FINAL Y CONFIRMACIÓN POR WHATSAPP -->
-    <section class="py-20 px-6 text-center relative">
-        <div class="max-w-xl mx-auto space-y-6">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">¡Te esperamos, no faltes!</h2>
-            <p class="text-slate-300 font-light">Tu presencia hará que este día sea inolvidable para mí.</p>
             
+            <p class="text-amber-300/90 font-serif italic text-xl">Karen Piedras Muñoz</p>
+
+            <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-6"></div>
+
+            <!-- BOTÓN PARA VER INVITACIÓN E INICIAR MÚSICA -->
             <div class="pt-4">
-                <a href="https://wa.me/522461288027?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Karen." target="_blank" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold px-8 py-4 rounded-full shadow-xl transition-all inline-block hover:scale-105">
-                    Confirmar por WhatsApp
-                </a>
+                <button onclick="openInvitation()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-10 py-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-3 mx-auto">
+                    <span>Ver invitación</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="py-8 text-center text-xs text-slate-500 border-t border-slate-800">
-        <p>Karen Piedras Muñoz &bull; Mis XV Años 2026</p>
-    </footer>
+    <!-- 2. CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
+    <div id="invitation-content" class="hidden opacity-0 transition-opacity duration-1000">
+
+        <!-- SECCIÓN PRINCIPAL (HERO) -->
+        <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900 via-slate-950 to-slate-950 overflow-hidden">
+            
+            <!-- EFECTO DE DESTELLOS Y LUCES EN EL FONDO -->
+            <div class="absolute inset-0 opacity-30 bg-[radial-gradient(#f59e0b_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                
+                <span class="text-amber-300 uppercase tracking-[0.3em] text-xs font-semibold">Te invito a celebrar</span>
+                
+                <h2 class="text-2xl md:text-3xl font-serif text-slate-300 italic">Mis XV Años</h2>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold text-amber-100 tracking-tight drop-shadow-md">
+                    Karen Piedras Muñoz
+                </h1>
+
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-4"></div>
+
+                <p class="text-lg md:text-xl font-light text-slate-300">
+                    Sábado, <span class="font-semibold text-amber-200">7 de Noviembre de 2026</span>
+                </p>
+
+                <!-- CONTENEDOR PERSONALIZADO PARA CADA INVITADO Y SU FAMILIA -->
+                <div id="personalized-box" class="mt-8 p-6 bg-slate-900/80 backdrop-blur-md rounded-2xl shadow-xl border border-amber-400/30 max-w-md mx-auto hidden">
+                    <p class="text-xs uppercase tracking-widest text-amber-300 font-bold mb-1">Invitación Especial Para</p>
+                    <h3 id="invitado-nombre" class="text-2xl font-serif font-bold text-white mb-2"></h3>
+                    <span class="inline-block bg-amber-400/20 text-amber-200 border border-amber-400/40 text-xs px-4 py-1.5 rounded-full font-semibold">
+                        ¡Y toda su familia!
+                    </span>
+                </div>
+
+                <!-- CUENTA REGRESIVA -->
+                <div class="grid grid-cols-4 gap-3 max-w-md mx-auto pt-8">
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                        <span id="days" class="block text-2xl font-bold text-amber-300">00</span>
+                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Días</span>
+                    </div>
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                        <span id="hours" class="block text-2xl font-bold text-amber-300">00</span>
+                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Horas</span>
+                    </div>
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                        <span id="minutes" class="block text-2xl font-bold text-amber-300">00</span>
+                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Minutos</span>
+                    </div>
+                    <div class="bg-slate-900/90 p-3 rounded-xl border border-amber-400/30 shadow-lg">
+                        <span id="seconds" class="block text-2xl font-bold text-amber-300">00</span>
+                        <span class="text-[10px] uppercase text-slate-400 tracking-wider">Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ITINERARIO -->
+        <section class="py-20 px-6 max-w-4xl mx-auto relative">
+            <div class="text-center mb-16">
+                <span class="text-amber-300 uppercase tracking-widest text-xs font-semibold">Programa</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mt-2">Itinerario del Día</h2>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <!-- Misa con Foto Local (iglesia.jpeg) y Enlace Directo a Google Maps -->
+                <div class="bg-slate-900/80 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <!-- Foto de la Iglesia de Santa María Magdalena -->
+                        <div class="w-full h-48 overflow-hidden relative">
+                            <img src="iglesia.jpeg" alt="Iglesia Santa María Magdalena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-8 pt-2">
+                            <span class="text-amber-300 font-bold text-lg">5:00 PM</span>
+                            <h3 class="text-xl font-serif font-bold text-white mt-1">Ceremonia Religiosa</h3>
+                            <p class="text-slate-300 mt-1">Iglesia de Santa María Magdalena</p>
+                            <p class="text-sm text-slate-400 mt-1">La Magdalena Tlaltelulco, Col. Centro</p>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-0">
+                        <a href="https://maps.app.goo.gl/36YGzN8QunBHEWrV9?g_st=ac" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-300 hover:text-amber-100 bg-amber-400/10 border border-amber-400/30 px-4 py-2.5 rounded-lg w-full justify-center transition-colors">
+                            📍 Abrir ubicación de la Iglesia en Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recepción con Enlace Directo a Google Maps -->
+                <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="absolute top-0 left-0 w-2 h-full bg-amber-400"></div>
+                        <span class="text-amber-300 font-bold text-lg">6:00 PM</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-2">Recepción</h3>
+                        <p class="text-slate-300 mt-1">Barrio de Comalteopa</p>
+                        <p class="text-sm text-slate-400 mt-1">Calle Prolongación Hidalgo No. 6</p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="https://maps.app.goo.gl/YG32VAfGYyLA54p6A?g_st=aw" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-300 hover:text-amber-100 bg-amber-400/10 border border-amber-400/30 px-4 py-2.5 rounded-lg w-full justify-center transition-colors">
+                            📍 Abrir ubicación de la Recepción en Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Comida -->
+                <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-amber-300"></div>
+                    <span class="text-amber-300 font-bold text-lg">6:30 PM</span>
+                    <h3 class="text-xl font-serif font-bold text-white mt-2">Comida</h3>
+                    <p class="text-slate-300 mt-1">Disfrutemos juntos de un gran banquete.</p>
+                </div>
+
+                <!-- Baile y Fiesta con Foto Local (baile.jpeg) -->
+                <div class="bg-slate-900/80 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <!-- Foto de Baile y Fiesta -->
+                        <div class="w-full h-48 overflow-hidden relative">
+                            <img src="baile.jpeg" alt="Baile y Fiesta XV Años" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-8 pt-2">
+                            <span class="text-amber-300 font-bold text-lg">7:00 PM</span>
+                            <h3 class="text-xl font-serif font-bold text-white mt-1">Baile y Fiesta</h3>
+                            <p class="text-slate-300 mt-1">Ameniza: <strong class="text-amber-200">Sonido Lasy Boys</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: GALERÍA DE RECUERDOS (CARRUSEL CON ACERCAMIENTO) -->
+        <section class="py-16 px-6 bg-slate-900/50 relative">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-10">
+                    <span class="text-amber-300 uppercase tracking-widest text-xs font-semibold">Momentos Especiales</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mt-2">Fotos del Recuerdo</h2>
+                    <div class="w-16 h-0.5 bg-amber-400/60 mx-auto mt-4"></div>
+                </div>
+
+                <!-- Carrusel visor individual -->
+                <div class="relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-400/40 bg-slate-950">
+                    
+                    <!-- Diapositivas (Fotos 1 a 10) -->
+                    <div id="slider-container" class="w-full h-full relative">
+                        <div class="slide-item active">
+                            <img src="fotos/foto1.jpeg" alt="Recuerdo 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto2.jpeg" alt="Recuerdo 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto3.jpeg" alt="Recuerdo 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto4.jpeg" alt="Recuerdo 4" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto5.jpeg" alt="Recuerdo 5" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto6.jpeg" alt="Recuerdo 6" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto7.jpeg" alt="Recuerdo 7" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto8.jpeg" alt="Recuerdo 8" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto9.jpeg" alt="Recuerdo 9" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slide-item">
+                            <img src="fotos/foto10.jpeg" alt="Recuerdo 10" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Botones Anterior / Siguiente -->
+                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer border border-amber-400/30">
+                        &#10094;
+                    </button>
+                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-slate-950/90 text-amber-300 p-3 rounded-full backdrop-blur-sm transition-all z-20 cursor-pointer border border-amber-400/30">
+                        &#10095;
+                    </button>
+
+                    <!-- Puntos indicativos de foto actual -->
+                    <div id="dots-container" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                        <!-- Los puntos se generan dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENSAJE FINAL Y CONFIRMACIÓN POR WHATSAPP -->
+        <section class="py-20 px-6 text-center relative">
+            <div class="max-w-xl mx-auto space-y-6">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">¡Te esperamos, no faltes!</h2>
+                <p class="text-slate-300 font-light">Tu presencia hará que este día sea inolvidable para mí.</p>
+                
+                <div class="pt-4">
+                    <a href="https://wa.me/522461288027?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Karen." target="_blank" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold px-8 py-4 rounded-full shadow-xl transition-all inline-block hover:scale-105">
+                        Confirmar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-8 text-center text-xs text-slate-500 border-t border-slate-800">
+            <p>Karen Piedras Muñoz &bull; Mis XV Años 2026</p>
+        </footer>
+    </div>
 
     <!-- JAVASCRIPT DE CONFIGURACIÓN -->
     <script>
-        // 1. Música de fondo con activación automática al primer toque en la pantalla
+        // 1. Función para abrir la invitación e iniciar la música
         const music = document.getElementById('bg-music');
-        let isPlaying = false;
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const invitationContent = document.getElementById('invitation-content');
 
-        function startAudio() {
-            if (!isPlaying) {
-                music.play().then(() => {
-                    isPlaying = true;
-                }).catch(e => console.log("Autoplay bloqueado por el navegador"));
-            }
+        function openInvitation() {
+            // Intentar reproducir audio
+            music.play().then(() => {
+                console.log("Música iniciada correctamente");
+            }).catch(e => console.log("Audio play error:", e));
+
+            // Transición suave: Ocultar pantalla de bienvenida
+            welcomeScreen.classList.add('opacity-0');
+            setTimeout(() => {
+                welcomeScreen.classList.add('hidden');
+                
+                // Mostrar contenido de la invitación
+                invitationContent.classList.remove('hidden');
+                setTimeout(() => {
+                    invitationContent.classList.remove('opacity-0');
+                }, 50);
+            }, 700);
         }
-
-        // Se activa con cualquier clic o toque en el dispositivo
-        document.addEventListener('click', startAudio, { once: true });
-        document.addEventListener('touchstart', startAudio, { once: true });
 
         // 2. Cuenta regresiva (7 de Noviembre de 2026 a las 17:00 hrs)
         const eventDate = new Date("2026-11-07T17:00:00").getTime();
@@ -372,7 +412,6 @@
     </script>
 </body>
 </html>
-
 
 
 
