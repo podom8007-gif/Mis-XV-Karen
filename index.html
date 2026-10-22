@@ -118,28 +118,42 @@
         </div>
 
         <div class="grid gap-6 md:grid-cols-2">
-            <!-- Misa -->
-            <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all">
-                <div class="absolute top-0 left-0 w-2 h-full bg-amber-400"></div>
-                <span class="text-amber-300 font-bold text-lg">5:00 PM</span>
-                <h3 class="text-xl font-serif font-bold text-white mt-2">Ceremonia Religiosa</h3>
-                <p class="text-slate-300 mt-1">Iglesia de Santa María Magdalena</p>
-                <p class="text-sm text-slate-400 mt-1">La Magdalena Tlaltelulco, Col. Centro</p>
-                <a href="https://maps.app.goo.gl/tu_enlace_misa" target="_blank" class="mt-4 inline-flex items-center text-xs font-semibold text-amber-300 hover:text-amber-100">
-                    Ver ubicación en mapa &rarr;
-                </a>
+            <!-- Misa con Foto Local (iglesia.jpeg) y Enlace Directo a Google Maps -->
+            <div class="bg-slate-900/80 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                <div>
+                    <!-- Foto de la Iglesia de Santa María Magdalena apuntando a iglesia.jpeg -->
+                    <div class="w-full h-48 overflow-hidden relative">
+                        <img src="iglesia.jpeg" alt="Iglesia Santa María Magdalena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8 pt-2">
+                        <span class="text-amber-300 font-bold text-lg">5:00 PM</span>
+                        <h3 class="text-xl font-serif font-bold text-white mt-1">Ceremonia Religiosa</h3>
+                        <p class="text-slate-300 mt-1">Iglesia de Santa María Magdalena</p>
+                        <p class="text-sm text-slate-400 mt-1">La Magdalena Tlaltelulco, Col. Centro</p>
+                    </div>
+                </div>
+                <div class="p-8 pt-0">
+                    <a href="https://maps.app.goo.gl/36YGzN8QunBHEWrV9?g_st=ac" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-300 hover:text-amber-100 bg-amber-400/10 border border-amber-400/30 px-4 py-2.5 rounded-lg w-full justify-center transition-colors">
+                        📍 Abrir ubicación de la Iglesia en Google Maps
+                    </a>
+                </div>
             </div>
 
-            <!-- Recepción -->
-            <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all">
-                <div class="absolute top-0 left-0 w-2 h-full bg-amber-400"></div>
-                <span class="text-amber-300 font-bold text-lg">6:00 PM</span>
-                <h3 class="text-xl font-serif font-bold text-white mt-2">Recepción</h3>
-                <p class="text-slate-300 mt-1">Barrio de Comalteopa</p>
-                <p class="text-sm text-slate-400 mt-1">Calle Prolongación Hidalgo No. 6</p>
-                <a href="https://maps.app.goo.gl/tu_enlace_recepcion" target="_blank" class="mt-4 inline-flex items-center text-xs font-semibold text-amber-300 hover:text-amber-100">
-                    Ver ubicación en mapa &rarr;
-                </a>
+            <!-- Recepción con Enlace Directo a Google Maps -->
+            <div class="bg-slate-900/80 p-8 rounded-2xl border border-amber-400/20 shadow-lg relative overflow-hidden group hover:border-amber-400/50 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="absolute top-0 left-0 w-2 h-full bg-amber-400"></div>
+                    <span class="text-amber-300 font-bold text-lg">6:00 PM</span>
+                    <h3 class="text-xl font-serif font-bold text-white mt-2">Recepción</h3>
+                    <p class="text-slate-300 mt-1">Barrio de Comalteopa</p>
+                    <p class="text-sm text-slate-400 mt-1">Calle Prolongación Hidalgo No. 6</p>
+                </div>
+                <div class="mt-8">
+                    <a href="https://maps.app.goo.gl/YG32VAfGYyLA54p6A?g_st=aw" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-300 hover:text-amber-100 bg-amber-400/10 border border-amber-400/30 px-4 py-2.5 rounded-lg w-full justify-center transition-colors">
+                        📍 Abrir ubicación de la Recepción en Google Maps
+                    </a>
+                </div>
             </div>
 
             <!-- Comida -->
@@ -229,7 +243,6 @@
             <p class="text-slate-300 font-light">Tu presencia hará que este día sea inolvidable para mí.</p>
             
             <div class="pt-4">
-                <!-- Enlace de WhatsApp actualizado al número 2461288027 -->
                 <a href="https://wa.me/522461288027?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Karen." target="_blank" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold px-8 py-4 rounded-full shadow-xl transition-all inline-block hover:scale-105">
                     Confirmar por WhatsApp
                 </a>
@@ -351,6 +364,7 @@
     </script>
 </body>
 </html>
+
 
 
 
