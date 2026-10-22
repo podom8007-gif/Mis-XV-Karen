@@ -50,9 +50,9 @@
             </svg>
             <span id="music-text" class="text-sm font-medium pr-2">Reproducir Música</span>
         </button>
-        <!-- Audio de fondo -->
+        <!-- Audio de fondo configurado para musica.mp3 -->
         <audio id="bg-music" loop>
-            <source src="https://www.bensound.com/bensound-music/bensound-waltz.mp3" type="audio/mpeg">
+            <source src="musica.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -173,7 +173,7 @@
             <!-- Carrusel visor individual -->
             <div class="relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-stone-900">
                 
-                <!-- Diapositivas (Fotos 1 a 10) -->
+                <!-- Diapositivas (Fotos 1 a 10 en formato .jpeg) -->
                 <div id="slider-container" class="w-full h-full relative">
                     <div class="slide-item active">
                         <img src="fotos/foto1.jpeg" alt="Recuerdo 1" class="w-full h-full object-cover">
@@ -244,7 +244,7 @@
 
     <!-- JAVASCRIPT DE CONFIGURACIÓN -->
     <script>
-        // 1. Música de fondo interactiva
+        // 1. Música de fondo interactiva con Autoplay al primer toque
         const music = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
         const musicText = document.getElementById('music-text');
@@ -265,6 +265,18 @@
             }
             isPlaying = !isPlaying;
         }
+
+        // Iniciar reproducción automática en cuanto el usuario toque/haga clic en la pantalla por primera vez
+        document.body.addEventListener('click', function() {
+            if (!isPlaying) {
+                music.play().then(() => {
+                    musicText.textContent = "Pausar Música";
+                    musicBtn.classList.remove('bg-rose-600');
+                    musicBtn.classList.add('bg-stone-800');
+                    isPlaying = true;
+                }).catch(e => console.log("Autoplay bloqueado por el navegador"));
+            }
+        }, { once: true });
 
         // 2. Cuenta regresiva (7 de Noviembre de 2026 a las 17:00 hrs)
         const eventDate = new Date("2026-11-07T17:00:00").getTime();
@@ -357,4 +369,6 @@
     </script>
 </body>
 </html>
+
+
 
